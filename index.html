@@ -153,25 +153,29 @@
 
   <script>
     // Placebo only — nothing is sent anywhere, no data leaves the page.
-    var form = document.getElementById('access-form');
-    var input = document.getElementById('access-input');
-    var button = document.getElementById('access-send');
-    var status = document.getElementById('status');
+    // Wrapped in an IIFE so no names leak to the global scope (in particular,
+    // a global `status` would alias window.status and silently break).
+    (function () {
+      var form = document.getElementById('access-form');
+      var input = document.getElementById('access-input');
+      var button = document.getElementById('access-send');
+      var statusEl = document.getElementById('status');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!input.value.trim()) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!input.value.trim()) return;
 
-      button.disabled = true;
-      button.textContent = 'Sending…';
+        button.disabled = true;
+        button.textContent = 'Sending…';
 
-      // Fake a brief delay so it feels like it's doing something.
-      setTimeout(function () {
-        button.textContent = 'Sent';
-        status.classList.add('show');
-        input.value = '';
-      }, 700);
-    });
+        // Fake a brief delay so it feels like it's doing something.
+        setTimeout(function () {
+          button.textContent = 'Sent';
+          statusEl.classList.add('show');
+          input.value = '';
+        }, 700);
+      });
+    })();
   </script>
 </body>
 </html>
