@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asanoso BETA, the Free AI</title>
+
+  <!-- ============================================================= -->
+  <!-- Discord / Open Graph link embed (this is what pops up in chat) -->
+  <!-- ============================================================= -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Asanoso" />
+  <meta property="og:title" content="Asanoso BETA, the Free AI" />
+  <meta property="og:description" content="Use Asanoso today for completely free. (yez its a small model its not very powerful don’t mind it) - shrekis.life hosting" />
+
+  <!-- Twitter/X card (some clients read these instead) -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Asanoso BETA, the Free AI" />
+  <meta name="twitter:description" content="Use Asanoso today for completely free. (yez its a small model its not very powerful don’t mind it) - shrekis.life hosting" />
+
+  <!-- The colored strip Discord draws down the left side of the embed -->
+  <meta name="theme-color" content="#6c5ce7" />
+
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --card: #17171f;
+      --text: #f2f2f5;
+      --muted: #9a9aa6;
+      --accent: #6c5ce7;
+      --border: #26262f;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      background: radial-gradient(1200px 600px at 50% -10%, #1c1c28 0%, var(--bg) 60%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 36px 32px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .lock {
+      font-size: 40px;
+      line-height: 1;
+      margin-bottom: 18px;
+      opacity: 0.9;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 6px;
+      letter-spacing: -0.2px;
+    }
+
+    .sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 18px 0 12px;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      background: #0f0f16;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      padding: 12px 14px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    input:focus { border-color: var(--accent); }
+    input::placeholder { color: #62626e; }
+
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.08s ease, opacity 0.15s ease;
+    }
+
+    button:hover { opacity: 0.92; }
+    button:active { transform: translateY(1px); }
+    button:disabled { cursor: default; opacity: 0.7; }
+
+    .status {
+      min-height: 18px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #58c98a;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .status.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="lock">🔒</div>
+    <h1>You don't have access to this page</h1>
+
+    <p class="sub">Ask for access (enter your email or discord username):</p>
+
+    <form id="access-form" autocomplete="off">
+      <input
+        id="access-input"
+        type="text"
+        placeholder="email or discord username"
+        aria-label="email or discord username"
+      />
+      <button type="submit" id="access-send">Send</button>
+    </form>
+
+    <p class="status" id="status">Request sent! You'll be notified once approved.</p>
+  </main>
+
+  <script>
+    // Placebo only — nothing is sent anywhere, no data leaves the page.
+    var form = document.getElementById('access-form');
+    var input = document.getElementById('access-input');
+    var button = document.getElementById('access-send');
+    var status = document.getElementById('status');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!input.value.trim()) return;
+
+      button.disabled = true;
+      button.textContent = 'Sending…';
+
+      // Fake a brief delay so it feels like it's doing something.
+      setTimeout(function () {
+        button.textContent = 'Sent';
+        status.classList.add('show');
+        input.value = '';
+      }, 700);
+    });
+  </script>
+</body>
+</html>
