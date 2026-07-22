@@ -1,0 +1,6 @@
+# macOS resource-fork / metadata files (this volume creates them)
+._*
+.DS_Store
+.AppleDouble
+.Spotlight-V100
+.Trashes
